@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <math.h>
+#define ARREGLO_MAX 10000
+
+int main(int argc, char const *argv[]) {
+	double empezar, terminar;
+	float a, hx, kappa, z0, z[ARREGLO_MAX];
+	int x,i,npx;
+	printf("Inserte un valor de x entre [0,9999] para el cual desea conocer el valor de la solución numérica: \n");
+	scanf("%d",&x);
+	kappa = 0.031568;
+	npx = 10000;
+	z0 = 2;
+	hx = 0.012671;
+	x = 9999;
+
+	for (i=2; i<= npx-1;i=1)
+	{
+		z[0] = z0;
+		z[1] = 1.99906;
+		a = (pow(kappa,2))*(sinh(z[i-2]));
+		z[i] = (2*z[i-1])-z[i-2]+(pow(hx,2))*(a);
+	}
+
+printf("%f\n",z[x]);
+return 0;
+
+}
